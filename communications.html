@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communications - Tourist Safety Dashboard</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo"><span class="material-icons-outlined">security</span></div>
+                <div class="sidebar-title"><h4>Authority Portal</h4><span>Tourist Safety Division</span></div>
+            </div>
+            <ul class="sidebar-links">
+                <li><a href="dashboard.html"><span class="material-icons-outlined">dashboard</span> Overview</a></li>
+                <li><a href="map.html"><span class="material-icons-outlined">map</span> Live Map</a></li>
+                <li><a href="alerts.html"><span class="material-icons-outlined">warning</span> Alerts</a></li>
+                <li><a href="emergency.html"><span class="material-icons-outlined">support</span> Emergency Response</a></li>
+                <li><a href="analytics.html"><span class="material-icons-outlined">analytics</span> Analytics</a></li>
+                <li><a href="communications.html" class="active"><span class="material-icons-outlined">forum</span> Communications</a></li>
+                <li><a href="reports.html"><span class="material-icons-outlined">summarize</span> Reports</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="hotline">
+                    <span class="material-icons-outlined">call</span>
+                    <div class="hotline-text"><span>Emergency Hotline</span><strong>+1-800-TOURIST</strong></div>
+                </div>
+            </div>
+        </nav>
+
+        <main class="main-content" id="communications-page">
+            <div class="chat-container">
+                <aside class="conversation-list">
+                    <header class="list-header">
+                        <h3>Communications <span class="item-count" id="convo-count">0</span></h3>
+                        <div class="search-bar">
+                            <span class="material-icons-outlined">search</span>
+                            <input type="text" placeholder="Search conversations...">
+                        </div>
+                    </header>
+                    <div class="conversations" id="conversation-list-container">
+                        </div>
+                    <footer class="list-footer">
+                        <button class="new-conversation-btn">
+                            <span class="material-icons-outlined">add_comment</span> New Conversation
+                        </button>
+                    </footer>
+                </aside>
+
+                <section class="chat-window">
+                    <header class="chat-header">
+                        <div class="tabs" id="communications-tabs">
+                            <button class="tab-link active" data-tab="active-chats">Active Chats</button>
+                            <button class="tab-link" data-tab="broadcast">Broadcast</button>
+                            <button class="tab-link" data-tab="contacts">Emergency Contacts</button>
+                            <button class="tab-link" data-tab="translation">Translation</button>
+                        </div>
+                    </header>
+
+                    <div id="active-chats-content" class="tab-content active">
+                        <div class="message-area" id="message-area">
+                            <div class="empty-chat" id="empty-chat-message">
+                                <span class="material-icons-outlined">chat</span>
+                                <p>Select a conversation to start messaging</p>
+                            </div>
+                        </div>
+                    </div>
+
+                   <div id="broadcast-content" class="tab-content broadcast-content">
+    <div class="broadcast-form-widget">
+        <h3>Send Broadcast Message</h3>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="broadcast-type">Message Type</label>
+                <select id="broadcast-type">
+                    <option>Weather Alert</option>
+                    <option>Security Advisory</option>
+                    <option>Public Disturbance</option>
+                    <option>Emergency Alert</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="broadcast-target">Target Audience</label>
+                <select id="broadcast-target">
+                    <option value="">Loading regions...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="broadcast-priority">Priority</label>
+                <select id="broadcast-priority">
+                    <option>High</option>
+                    <option>Medium</option>
+                    <option>Low</option>
+                </select>
+            </div>
+        </div>
+        <textarea id="broadcast-message" placeholder="Enter your broadcast message..."></textarea>
+        <div class="form-actions">
+            <button class="filter-btn save-draft-btn">Save Draft</button>
+            <button class="export-btn send-broadcast-btn">Send Broadcast</button>
+        </div>
+    </div>
+
+    <div class="recent-broadcasts">
+        <h3>Recent Broadcasts</h3>
+        <div id="recent-broadcasts-list"></div>
+    </div>
+</div>
+
+                    <div id="contacts-content" class="tab-content contacts-content">
+                        </div>
+
+                    <div id="translation-content" class="tab-content translation-content">
+                        <div class="widget">
+                            <h3>Translation Services</h3>
+                            <div class="translator-grid" id="translator-grid-container">
+                                </div>
+                        </div>
+                        
+                        <div class="widget quick-translation">
+                            <h3>Quick Translation</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="quick-translate-from">From Language</label>
+                                    <select id="quick-translate-from">
+                                        <option value="">Loading...</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="quick-translate-to">To Language</label>
+                                    <select id="quick-translate-to">
+                                        <option value="">Loading...</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="quick-translate-input">Enter text to translate...</label>
+                                <textarea id="quick-translate-input"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Translation</label>
+                                <textarea id="quick-translate-output" readonly></textarea>
+                            </div>
+                            <div class="form-actions" style="justify-content: flex-start;">
+                                <button class="export-btn" id="quick-translate-btn">
+                                    <span class="material-icons-outlined">translate</span> Translate
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="message-input-area" id="message-input-form">
+                        <select class="radio-select" id="message-channel-select">
+    <option value="radio">Radio</option>
+    <option value="phone">Phone</option>
+    <option value="email">Email</option>
+    <option value="sms">SMS</option>
+</select>
+                        <input type="text" id="message-input" placeholder="Type your message..." autocomplete="off">
+                        <button type="submit" class="send-btn"><span class="material-icons-outlined">send</span></button>
+                    </form>
+                </section>
+            </div>
+        </main>
+    </div>
+    
+   <div id="new-convo-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h2>Start a New Conversation</h2>
+            <form id="new-convo-form">
+                <div class="form-group">
+                    <label for="new-convo-to">To (Team or User ID):</label>
+                    <input type="text" id="new-convo-to" placeholder="e.g., 'Alpha Team' or 'user-123'">
+                </div>
+                <div class="form-group">
+                    <label for="new-convo-message">Message:</label>
+                    <textarea id="new-convo-message" placeholder="Type your message..."></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" id="new-convo-close-btn" class="filter-btn">Close</button>
+                    <button type="submit" class="export-btn">Send Message</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="communications.js"></script>
+</body>
+</html>

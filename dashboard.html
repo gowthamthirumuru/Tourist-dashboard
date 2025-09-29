@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourist Safety Dashboard</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="dashboard.css">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <span class="material-icons-outlined">security</span>
+                </div>
+                <div class="sidebar-title">
+                    <h4>Authority Portal</h4>
+                    <span>Tourist Safety Division</span>
+                </div>
+            </div>
+            <ul class="sidebar-links">
+                <li><a href="dashboard.html" class="active"><span class="material-icons-outlined">dashboard</span> Overview</a></li>
+                <li><a href="map.html"><span class="material-icons-outlined">map</span> Live Map</a></li>
+                <li><a href="alerts.html"><span class="material-icons-outlined">warning</span> Alerts</a></li>
+                <li><a href="emergency.html"><span class="material-icons-outlined">support</span> Emergency Response</a></li>
+                <li><a href="analytics.html"><span class="material-icons-outlined">analytics</span> Analytics</a></li>
+                <li><a href="communications.html"><span class="material-icons-outlined">forum</span> Communications</a></li>
+                <li><a href="reports.html"><span class="material-icons-outlined">summarize</span> Reports</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="hotline-text">
+                    <span>Emergency Hotline</span>
+                    <strong>+1-800-TOURIST</strong>
+                </div>
+            </div>
+        </nav>
+
+        <main class="main-content">
+    <header class="main-header">
+         <div class="header-title">
+            <h1>Tourist Safety Dashboard</h1>
+            <p>Real-time monitoring and emergency response system</p>
+        </div>
+        <div class="header-status">
+            <span class="status-dot"></span> System Operational
+            <span class="last-updated">Last Updated: 19:09:48</span>
+        </div>
+    </header>
+
+    <div class="widget command-center-widget">
+        <div class="command-center-info">
+            <h3>Emergency Command Center</h3>
+            <p>Live operational status • 19:39:14 • <span id="command-center-active-text" class="active-emergencies-text">...</span></p>
+        </div>
+        <div class="threat-level">
+            <span class="material-icons-outlined">warning</span>
+            Threat Level: Medium Risk
+        </div>
+        <button class="emergency-protocol-btn">
+            <span class="material-icons-outlined">gavel</span>
+            Emergency Protocol
+        </button>
+    </div>
+
+    <div class="widget live-emergencies-widget">
+        <div class="widget-header">
+            <h4>
+                <span class="live-indicator"></span>
+                LIVE EMERGENCIES - IMMEDIATE ACTION REQUIRED
+            </h4>
+            <span id="live-active-count" class="active-count">...</span>
+        </div>
+        <div id="live-emergencies-list">
+            </div>
+    </div>
+
+    <div class="kpi-grid">
+        <div class="kpi-card-small">
+            <h4>Active Emergencies</h4>
+            <div class="kpi-value">
+                <span id="kpi-active-emergencies">...</span>
+                <span class="kpi-change positive">+1 in last hour</span>
+            </div>
+        </div>
+        <div class="kpi-card-small">
+            <h4>Available Teams</h4>
+            <div class="kpi-value">
+                <span id="kpi-available-teams">...</span>
+                <span id="kpi-responding-teams" class="kpi-subtext">...</span>
+            </div>
+        </div>
+        <div class="kpi-card-small">
+            <h4>Response Time</h4>
+            <div class="kpi-value">
+                <span id="kpi-response-time">...</span>
+                <span class="kpi-subtext green">Target: &lt;8 min</span>
+            </div>
+        </div>
+        <div class="kpi-card-small">
+            <h4>Tourists Tracked</h4>
+            <div class="kpi-value">
+                <span>12,847</span>
+                <span class="kpi-change positive-green">+247 today</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="middle-grid">
+        <div class="widget command-control-widget">
+            <div class="widget-header">
+                <h4><span class="material-icons-outlined">cell_tower</span> Emergency Command & Control</h4>
+            </div>
+            <div class="command-control-body">
+                <h5>Quick Tourist Search</h5>
+                <div class="search-group">
+                    <input type="text" placeholder="Enter tourist name or ID...">
+                    <button><span class="material-icons-outlined">search</span></button>
+                </div>
+                <h5>Emergency Broadcast</h5>
+                <select id="broadcast-region-select">
+                    <option>Loading regions...</option>
+                </select>
+                <textarea placeholder="Emergency message..."></textarea>
+                <button class="broadcast-btn"><span class="material-icons-outlined">send</span> Send Emergency Broadcast</button>
+            </div>
+            <div class="command-control-footer">
+                <button><span class="material-icons-outlined">map</span> Live Map</button>
+                <button><span class="material-icons-outlined">analytics</span> System Check</button>
+                <button><span class="material-icons-outlined">summarize</span> Reports</button>
+                <button><span class="material-icons-outlined">settings</span> Settings</button>
+            </div>
+        </div>
+        <div class="widget available-teams-widget">
+            <div class="widget-header">
+                <h4><span class="material-icons-outlined">shield</span> Available Response Teams</h4>
+                <span id="available-teams-count" class="available-count">...</span>
+            </div>
+            <div class="available-teams-list" id="available-teams-list">
+                 </div>
+             <button class="view-all-teams-btn">View All Teams</button>
+        </div>
+    </div>
+
+    <div class="widget notifications-widget">
+         <div class="widget-header">
+            <h4><span class="material-icons-outlined">priority_high</span> Priority Notifications</h4>
+            <button class="refresh-btn"><span class="material-icons-outlined">refresh</span> Refresh</button>
+        </div>
+        <div class="notifications-list" id="notifications-list">
+            </div>
+    </div>
+</main>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

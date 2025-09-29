@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map View - Tourist Safety Dashboard</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+</head>
+<body>
+
+    <div class="dashboard-container">
+       <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <span class="material-icons">security</span>
+                </div>
+                <div class="sidebar-title">
+                    <h4>Authority Portal</h4>
+                    <span>Tourist Safety Division</span>
+                </div>
+            </div>
+            <ul class="sidebar-links">
+                <li><a href="dashboard.html"><span class="material-icons">dashboard</span> Overview</a></li>
+                <li><a href="map.html" class="active"><span class="material-icons">map</span> Live Map</a></li>
+                <li><a href="alerts.html"><span class="material-icons">warning</span> Alerts</a></li>
+                <li><a href="emergency.html"><span class="material-icons">support</span> Emergency Response</a></li>
+                <li><a href="analytics.html"><span class="material-icons">analytics</span> Analytics</a></li>
+                <li><a href="communications.html"><span class="material-icons">forum</span> Communications</a></li>
+                <li><a href="reports.html"><span class="material-icons">summarize</span> Reports</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="hotline">
+                    <span class="material-icons">call</span>
+                    <div class="hotline-text">
+                        <span>Emergency Hotline</span>
+                        <strong>+1-800-123</strong>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main class="main-content" id="map-page-content">
+            <div class="map-page-header">
+                <div class="map-title-section">
+                    <h2>Tourist Safety Dashboard</h2>
+                    <p>Real-time monitoring and emergency response system</p>
+                </div>
+                <div class="map-status-section">
+                    <span><i class="status-dot"></i> System Operational</span>
+                    <small>Last Updated: 11:47:15</small>
+                </div>
+            </div>
+
+            <div class="map-toolbar">
+                <div class="search-bar map-search">
+                    <span class="material-icons">search</span>
+                    <input type="text" placeholder="Search locations...">
+                </div>
+                <div class="map-filters">
+                    <select><option>All Layers</option></select>
+                    <button class="filter-btn"><span class="material-icons">filter_alt</span> Filters</button>
+                    <button class="real-time-btn active"><span class="material-icons">wifi_tethering</span> Real-time</button>
+                </div>
+            </div>
+
+            <div class="map-page-container">
+                <div class="map-area">
+                    <div id="full-map"></div>
+                    <div class="map-legend">
+                        <h4>Map Layers</h4>
+                        <ul>
+                            <li><span class="dot red"></span> Active Incidents</li>
+                            <li><span class="dot blue"></span> Tourist Density</li>
+                            <li><span class="dot green"></span> Response Teams</li>
+                            <li><span class="dot purple"></span> Risk Zones</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <aside class="right-sidebar">
+                    <div class="sidebar-header">
+                        <h3>Live Feed</h3>
+                        <span class="item-count">4</span>
+                    </div>
+                    <div id="live-feed-alerts">
+                        </div>
+
+                    <div class="sidebar-header">
+                        <h3>Response Teams</h3>
+                        <span class="item-count">4</span>
+                    </div>
+                    <div id="response-teams-list">
+                        </div>
+                </aside>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+    <script src="map.js"></script> </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - Tourist Safety Dashboard</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo"><span class="material-icons-outlined">security</span></div>
+                <div class="sidebar-title"><h4>Authority Portal</h4><span>Tourist Safety Division</span></div>
+            </div>
+            <ul class="sidebar-links">
+                <li><a href="dashboard.html"><span class="material-icons-outlined">dashboard</span> Overview</a></li>
+                <li><a href="map.html"><span class="material-icons-outlined">map</span> Live Map</a></li>
+                <li><a href="alerts.html"><span class="material-icons-outlined">warning</span> Alerts</a></li>
+                <li><a href="emergency.html"><span class="material-icons-outlined">support</span> Emergency Response</a></li>
+                <li><a href="analytics.html" class="active"><span class="material-icons-outlined">analytics</span> Analytics</a></li>
+                <li><a href="communications.html"><span class="material-icons-outlined">forum</span> Communications</a></li>
+                <li><a href="reports.html"><span class="material-icons-outlined">summarize</span> Reports</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="hotline">
+                    <span class="material-icons-outlined">call</span>
+                    <div class="hotline-text"><span>Emergency Hotline</span><strong>+1-800-TOURIST</strong></div>
+                </div>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-title">
+                    <h1>Analytics Dashboard</h1>
+                    <p>Comprehensive insights and performance metrics</p>
+                </div>
+                <div class="header-actions">
+                    <div class="dropdown">
+                        <button class="date-range-btn" id="date-range-toggle">
+                            <span>Last 7 days</span>
+                            <span class="material-icons-outlined">expand_more</span>
+                        </button>
+                        <div class="dropdown-menu" id="date-range-menu">
+                            <a href="#" class="dropdown-item">Last 7 days</a>
+                            <a href="#" class="dropdown-item">Last 30 days</a>
+                            <a href="#" class="dropdown-item">Last 3 months</a>
+                            <a href="#" class="dropdown-item">Last 6 months</a>
+                            <a href="#" class="dropdown-item">Last 1 year</a>
+                        </div>
+                    </div>
+                    <button class="date-range-btn"><span class="material-icons-outlined">calendar_today</span> Custom Range</button>
+                    <button class="export-btn" id="export-report-btn"><span class="material-icons-outlined">download</span> Export Report</button>
+                </div>
+            </header>
+
+            <div class="kpi-grid" id="analytics-kpi-grid"></div>
+
+            <div class="tabs" id="analytics-tabs">
+                <button class="tab-link active" data-tab="incident-analysis">Incident Analysis</button>
+                <button class="tab-link" data-tab="tourism-flow">Tourism Flow</button>
+                <button class="tab-link" data-tab="team-performance">Team Performance</button>
+                <button class="tab-link" data-tab="risk-assessment">Risk Assessment</button>
+            </div>
+
+            <div id="incident-analysis" class="tab-content active">
+                <div class="analytics-content-grid">
+                    <div class="widget"><h3>Incident Trends</h3><div class="chart-wrapper"><canvas id="incidentTrendsChart"></canvas></div></div>
+                    <div class="widget"><h3>Incident Categories</h3><div class="category-chart-container"><div class="category-legend" id="category-legend"></div><div class="category-chart chart-wrapper"><canvas id="incidentCategoriesChart"></canvas></div></div></div>
+                    <div class="widget full-width"><h3>Response Time Analysis</h3><div class="chart-wrapper"><canvas id="responseTimeChart"></canvas></div></div>
+                </div>
+            </div>
+            <div id="tourism-flow" class="tab-content">
+                <div class="analytics-content-grid">
+                    <div class="widget"><h3>Tourist Flow Trends</h3><div class="chart-wrapper"><canvas id="touristFlowChart"></canvas></div></div>
+                    <div class="widget tourism-stats-widget"><h3>Tourism Statistics</h3><div class="stats-kpi-group"><div class="stats-kpi" id="total-visitors"></div><div class="stats-kpi" id="international-visitors"></div></div><ul class="stats-list" id="tourism-stats-list"></ul></div>
+                </div>
+            </div>
+            <div id="team-performance" class="tab-content">
+                <div class="analytics-content-grid">
+                    <div class="widget full-width"><h3>Team Performance Metrics</h3><table class="performance-table" id="team-performance-table"><thead><tr><th>Team</th><th>Avg Response Time</th><th>Incidents Handled</th><th>Success Rate</th><th>Performance</th></tr></thead><tbody></tbody></table></div>
+                    <div class="widget"><h3>Response Time Distribution</h3><div class="chart-wrapper"><canvas id="responseTimeDistributionChart"></canvas></div></div>
+                    <div class="widget"><h3>Success Rate Comparison</h3><div class="chart-wrapper"><canvas id="successRateChart"></canvas></div></div>
+                </div>
+            </div>
+            <div id="risk-assessment" class="tab-content">
+                <div class="analytics-content-grid">
+                    <div class="widget full-width"><h3>Risk Assessment by Location</h3><table class="performance-table" id="risk-assessment-table"><thead><tr><th>Location</th><th>Risk Score</th><th>Incidents</th><th>Tourist Count</th><th>Risk Level</th></tr></thead><tbody></tbody></table></div>
+                    <div class="widget"><h3>Risk Score Distribution</h3><div class="chart-wrapper"><canvas id="riskScoreDistributionChart"></canvas></div></div>
+                    <div class="widget"><h3>Incident vs Tourist Ratio</h3><div class="chart-wrapper"><canvas id="incidentTouristRatioChart"></canvas></div></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="analytics.js"></script>
+</body>
+</html>

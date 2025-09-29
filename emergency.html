@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Response - Tourist Safety Dashboard</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo"><span class="material-icons">security</span></div>
+                <div class="sidebar-title"><h4>Authority Portal</h4><span>Tourist Safety Division</span></div>
+            </div>
+            <ul class="sidebar-links">
+                <li><a href="dashboard.html"><span class="material-icons">dashboard</span> Overview</a></li>
+                <li><a href="map.html"><span class="material-icons">map</span> Live Map</a></li>
+                <li><a href="alerts.html"><span class="material-icons">warning</span> Alerts</a></li>
+                <li><a href="emergency.html" class="active"><span class="material-icons">support</span> Emergency Response</a></li>
+                <li><a href="analytics.html"><span class="material-icons">analytics</span> Analytics</a></li>
+                <li><a href="communications.html"><span class="material-icons">forum</span> Communications</a></li>
+                <li><a href="reports.html"><span class="material-icons">summarize</span> Reports</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="hotline">
+                    <span class="material-icons">call</span>
+                    <div class="hotline-text"><span>Emergency Hotline</span><strong>+1-800-123</strong></div>
+                </div>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <header class="main-header">
+                <h1>Emergency Response</h1>
+                <div class="header-profile">
+                    <span class="material-icons">notifications</span>
+                    <span class="material-icons">account_circle</span>
+                </div>
+            </header>
+
+            <div class="kpi-grid" id="emergency-kpi-grid"></div>
+
+            <div class="tabs" id="emergency-tabs">
+                <button class="tab-link active" data-tab="active-emergencies">Active Emergencies</button>
+                <button class="tab-link" data-tab="response-teams">Response Teams</button>
+                <button class="tab-link" data-tab="protocols">Protocols</button>
+                <button class="tab-link" data-tab="emergency-broadcast">Emergency Broadcast</button>
+            </div>
+
+            <div id="active-emergencies" class="tab-content active"></div>
+            <div id="response-teams" class="tab-content"></div>
+            <div id="protocols" class="tab-content"></div>
+            <div id="emergency-broadcast" class="tab-content">
+                <div class="widget broadcast-form">
+                    <h3>Emergency Broadcast System</h3>
+                    <div class="form-group"><label>Broadcast Type</label><select id="broadcast-type"><option value="">Select broadcast type...</option><option value="Weather Alert">Weather Alert</option><option value="Security Advisory">Security Advisory</option><option value="Emergency Evacuation">Emergency Evacuation</option><option value="General Info">General Info</option></select></div>
+                    <div class="form-group"><label>Target Regions</label><select id="broadcast-regions"><option>Loading regions...</option></select></div>
+                    <div class="form-group"><label>Message</label><textarea id="broadcast-message" placeholder="Type your emergency broadcast message here..."></textarea></div>
+                    <div class="form-actions">
+                        <button class="send-broadcast-btn"><span class="material-icons">send</span> Send Emergency Broadcast</button>
+                    </div>
+                </div>
+                <div class="emergency-contacts">
+                    <h3>Emergency Contacts</h3>
+                    <div class="contacts-grid" id="contacts-grid"></div>
+                </div>
+            </div>
+            
+            <div id="radio-modal" class="modal-overlay">
+                <div class="modal-content radio-modal-content">
+                    <div class="radio-live-indicator"></div><span class="material-icons radio-icon">cell_tower</span>
+                    <h3>Radio Channel Open</h3>
+                    <p>Connected to: <strong id="radio-team-name"></strong></p>
+                    <button id="radio-disconnect-btn">Disconnect</button>
+                </div>
+            </div>
+            
+            <div id="toast-notification" class="toast-notification">
+                <span class="material-icons" id="toast-icon"></span>
+                <p id="toast-message"></p>
+            </div>
+        </main>
+    </div>
+    
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="emergency.js"></script>
+</body>
+</html>
